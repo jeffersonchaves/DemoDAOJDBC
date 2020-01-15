@@ -1,11 +1,10 @@
-package br.edu.ifpr.foz.DAO;
+package br.edu.ifpr.foz.dao;
 
-import br.edu.ifpr.foz.Entities.Department;
-import br.edu.ifpr.foz.Entities.Seller;
+import br.edu.ifpr.foz.entities.Seller;
 
 import java.util.List;
 
-public interface SellerDAO {
+public interface SellerDao {
 
     void insert(Seller seller);
     void update(Seller seller);

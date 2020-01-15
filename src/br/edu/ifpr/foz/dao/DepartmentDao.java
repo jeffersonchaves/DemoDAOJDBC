@@ -1,10 +1,10 @@
-package br.edu.ifpr.foz.DAO;
+package br.edu.ifpr.foz.dao;
 
-import br.edu.ifpr.foz.Entities.Department;
+import br.edu.ifpr.foz.entities.Department;
 
 import java.util.List;
 
-public interface DepartmentDAO {
+public interface DepartmentDao {
 
     void insert(Department department);
     void update(Department department);

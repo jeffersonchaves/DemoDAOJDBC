@@ -1,7 +1,7 @@
 package br.edu.ifpr.foz;
 
-import br.edu.ifpr.foz.Entities.Department;
-import br.edu.ifpr.foz.Entities.Seller;
+import br.edu.ifpr.foz.entities.Department;
+import br.edu.ifpr.foz.entities.Seller;
 
 import java.util.Date;
 

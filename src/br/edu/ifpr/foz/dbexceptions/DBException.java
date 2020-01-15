@@ -1,4 +1,4 @@
-package br.edu.ifpr.foz.DBExceptions;
+package br.edu.ifpr.foz.dbexceptions;
 
 public class DBException extends RuntimeException {
 

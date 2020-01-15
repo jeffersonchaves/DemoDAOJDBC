@@ -1,4 +1,4 @@
-package br.edu.ifpr.foz.Entities;
+package br.edu.ifpr.foz.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

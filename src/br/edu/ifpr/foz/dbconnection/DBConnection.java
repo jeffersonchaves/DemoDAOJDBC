@@ -1,6 +1,6 @@
-package br.edu.ifpr.foz.DBConnection;
+package br.edu.ifpr.foz.dbconnection;
 
-import br.edu.ifpr.foz.DBExceptions.DBException;
+import br.edu.ifpr.foz.dbexceptions.DBException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
