@@ -1,6 +1,9 @@
 package br.edu.ifpr.foz;
 
 import br.edu.ifpr.foz.Entities.Department;
+import br.edu.ifpr.foz.Entities.Seller;
+
+import java.util.Date;
 
 public class Main {
 
@@ -10,5 +13,9 @@ public class Main {
         department.setName("Boks");
 
         System.out.println(department);
+
+        Seller seller = new Seller(1, "Bob", "Bob@gmail.com", new Date(), 3000.00, department);
+
+        System.out.println(seller);
     }
 }
