@@ -37,19 +37,30 @@ public class Main {
 
         System.out.println("\n=== TEST 4: Seller insert ===");
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date birthDate = simpleDateFormat.parse("26/04/1989");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        Date birthDate = simpleDateFormat.parse("26/04/1989");
+//
+//        Seller newSeller = new Seller();
+//        newSeller.setName("Crhis Yellow");
+//        newSeller.setEmail("crhisyellow@email.com");
+//        newSeller.setBirthDate(birthDate);
+//        newSeller.setBaseSalary(8000.0);
+//        newSeller.setDepartment(new Department(1, null));
+//
+//        sellerDao.insert(newSeller);
+//
+//        System.out.println(newSeller);
 
-        Seller newSeller = new Seller();
-        newSeller.setName("Crhis Yellow");
-        newSeller.setEmail("crhisyellow@email.com");
-        newSeller.setBirthDate(birthDate);
-        newSeller.setBaseSalary(8000.0);
-        newSeller.setDepartment(new Department(1, null));
+        System.out.println("\n=== TEST 5: Seller insert ===");
 
-        sellerDao.insert(newSeller);
 
-        System.out.println(newSeller);
+        Seller sellerUpdated = sellerDao.findById(1);
+        sellerUpdated.setName("Bruce Whayne");
+        sellerUpdated.setEmail("bruce@email.com");
+
+        sellerDao.update(sellerUpdated);
+
+        System.out.println(sellerUpdated);
 
     }
 }
