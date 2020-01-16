@@ -1,4 +1,4 @@
 package br.edu.ifpr.foz.dao.impl;
 
-public class DepartmentDaoImpl {
+public class DepartmentDaoJDBC {
 }
