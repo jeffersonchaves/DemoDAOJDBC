@@ -5,14 +5,11 @@ import br.edu.ifpr.foz.dao.SellerDao;
 import br.edu.ifpr.foz.entities.Department;
 import br.edu.ifpr.foz.entities.Seller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         SellerDao sellerDao = DaoFactory.createSellerDao();
         List<Seller> sellers;
 

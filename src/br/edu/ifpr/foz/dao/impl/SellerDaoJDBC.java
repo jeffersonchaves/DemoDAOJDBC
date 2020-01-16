@@ -33,7 +33,7 @@ public class SellerDaoJDBC implements SellerDao {
             statement.setDouble(4, seller.getBaseSalary());
             statement.setInt(5, seller.getDepartment().getId());
 
-            Integer rowsAffected = statement.executeUpdate();
+            int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0){
                 ResultSet resultSet = statement.getGeneratedKeys();
@@ -130,11 +130,8 @@ public class SellerDaoJDBC implements SellerDao {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
-
                 Department department = instantiateDepartment(resultSet);
-                Seller seller = instantiateSeller(resultSet, department);
-
-                return seller;
+                return instantiateSeller(resultSet, department);
             }
 
         } catch (SQLException e) {
