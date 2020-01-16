@@ -1,13 +1,11 @@
 package br.edu.ifpr.foz.dao.impl;
 
+import br.edu.ifpr.foz.dbexceptions.DBException;
 import br.edu.ifpr.foz.entities.Department;
 import br.edu.ifpr.foz.entities.Seller;
 import br.edu.ifpr.foz.dao.SellerDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +21,31 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public void insert(Seller seller) {
+
+        try {
+
+            String sql = "INSERT INTO seller (Name, Email, BirthDate, BaseSalary, DepartmentId) VALUES (?,?,?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, seller.getName());
+            statement.setString(2, seller.getEmail());
+            statement.setDate(3, new java.sql.Date(seller.getBirthDate().getTime()));
+            statement.setDouble(4, seller.getBaseSalary());
+            statement.setInt(5, seller.getDepartment().getId());
+
+            Integer rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0){
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+                seller.setId(resultSet.getInt(1));
+            } else {
+                throw new DBException("Unexpect Exception! No rows affected");
+            }
+
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage());
+        }
 
     }
 
