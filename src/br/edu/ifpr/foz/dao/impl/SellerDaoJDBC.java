@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SellerDaoJDBC implements SellerDao {
 
@@ -32,6 +34,45 @@ public class SellerDaoJDBC implements SellerDao {
     @Override
     public void deleteById(Integer id) {
 
+    }
+
+    @Override
+    public List<Seller> findAll() {
+        List<Seller> sellers = new ArrayList<>();
+
+
+        try {
+
+            String sql = "select seller.*, department.Name as depName " +
+                    "from seller INNER JOIN department " +
+                    "ON seller.DepartmentId = department.Id " +
+                    "ORDER BY seller.Name";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = statement.executeQuery();
+            Map<Integer, Department> map = new HashMap<>();
+
+            while (resultSet.next()){
+
+                Department department = map.get(resultSet.getInt("DepartmentId"));
+
+                if (department == null){
+                    department = instantiateDepartment(resultSet);
+                    map.put(resultSet.getInt("DepartmentId"), department);
+                }
+
+                Seller seller = instantiateSeller(resultSet, department);
+
+                sellers.add(seller);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return sellers;
     }
 
     @Override
@@ -110,10 +151,4 @@ public class SellerDaoJDBC implements SellerDao {
         return new Department(resultSet.getInt("DepartmentId"), resultSet.getString("depName"));
 
     }
-
-    @Override
-    public List<Seller> findAll() {
-        return null;
-    }
-
 }

@@ -12,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         SellerDao sellerDao = DaoFactory.createSellerDao();
+        List<Seller> sellers;
 
         System.out.println("=== TEST 1: Seller findById ===");
         Seller seller = sellerDao.findById(3);
@@ -19,7 +20,14 @@ public class Main {
         System.out.println(seller);
 
         System.out.println("\n=== TEST 2: Seller findByDepartment ===");
-        List<Seller> sellers = sellerDao.findByDepartment(new Department(1, null));
+        sellers = sellerDao.findByDepartment(new Department(1, null));
+
+        for (Seller obj: sellers ) {
+            System.out.println(obj);
+        }
+
+        System.out.println("\n=== TEST 3: Seller findAll ===");
+        sellers = sellerDao.findAll();
 
         for (Seller obj: sellers ) {
             System.out.println(obj);
